@@ -5,166 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beginner's Guide | HTML Learning Hub</title>
     <style>
-        :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff3e9d;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #28a745;
-            --warning: #ffc107;
-            --info: #17a2b8;
-        }
-        
         body {
-            font-family: 'Comic Neue', cursive, Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, var(--light) 0%, #e6f2ff 100%);
-            color: var(--dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #fff8f1, #ffe6cc);
+            color: #333;
             line-height: 1.6;
         }
         
         header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            padding: 20px;
+            background: linear-gradient(to right, #2f2f2f, #4d2600);
+            color: #fff;
+            padding: 2rem 1rem;
             text-align: center;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+        
+        header p {
+            margin-top: 0.5rem;
+            font-style: italic;
         }
         
         nav {
-            background-color: var(--dark);
-            padding: 0.8rem;
+            background-color: #1f1f1f;
+            padding: 1rem;
         }
         
         nav ul {
-            list-style-type: none;
+            list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-wrap: wrap;
+            gap: 2rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
         
         nav li {
-            margin: 0 1rem;
+            margin: 0;
         }
         
         nav a {
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
         }
         
         nav a:hover {
-            background-color: var(--primary);
+            color: #ff9900;
         }
         
         .container {
             max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
         
         .card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-in-out;
         }
         
-        .quiz {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid var(--info);
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            border-color: #ff9900;
         }
         
-        .quiz-question {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .quiz-options {
-            margin-left: 20px;
-        }
-        
-        .quiz-option {
-            margin-bottom: 8px;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        
-        .quiz-option:hover {
-            background-color: #e9ecef;
-        }
-        
-        .quiz-feedback {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .correct {
-            background-color: #d4edda;
-            color: #155724;
-            border-left: 4px solid var(--success);
-        }
-        
-        .incorrect {
-            background-color: #f8d7da;
-            color: #721c24;
-            border-left: 4px solid #dc3545;
+        .card h2 {
+            color: #b3541e;
+            margin-top: 0;
         }
         
         .pseudo-exercise {
-            background-color: #fff8e1;
-            padding: 15px;
+            background-color: #f8f9fa;
+            padding: 1.5rem;
             border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+            border-left: 4px solid #ff9900;
         }
         
         .pseudo-example {
             background-color: white;
-            padding: 15px;
+            padding: 1rem;
             border-radius: 8px;
-            margin: 10px 0;
+            margin: 1rem 0;
             font-family: 'Courier New', monospace;
+            border: 1px solid #eee;
+        }
+        
+        .quiz {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #b3541e;
+        }
+        
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-options {
+            margin-left: 1rem;
+        }
+        
+        .quiz-option {
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            padding: 0.8rem;
+            border-radius: 6px;
+            transition: background 0.3s;
+            border: 1px solid #eee;
+        }
+        
+        .quiz-option:hover {
+            background-color: #ffe6cc;
+        }
+        
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #e6ffe6;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+        
+        .incorrect {
+            background-color: #ffebeb;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.2rem;
+            background-color: #ff9900;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease-in-out;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #cc7a00;
         }
         
         footer {
-            background-color: var(--dark);
-            color: white;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 2rem 1rem;
+            background: #2f2f2f;
+            color: #fff;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
-                align-items: center;
+                gap: 1rem;
             }
             
-            nav li {
-                margin: 0.3rem 0;
+            .container {
+                padding: 0 1rem;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -175,13 +201,12 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-			     <li><a href="learn.html">Learn</a></li>
+            <li><a href="learn.html">Learn</a></li>
             <li><a href="lessons.html">HTML Lessons</a></li>
             <li><a href="playground.html">Interactive Playground</a></li>
             <li><a href="challenges.html">Coding Challenges</a></li>
             <li><a href="beginner.html">Beginner's Guide</a></li>
             <li><a href="IDE.html">IDE</a></li>
-			
         </ul>
     </nav>
     
@@ -205,8 +230,8 @@
 7. Enjoy your sandwich!
                 </div>
                 
-                <button onclick="checkSandwichAlgorithm()" style="background: var(--success); color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">Check My Steps</button>
-                <div id="sandwich-feedback" style="display:none; margin-top:10px; padding:10px; background-color:#e6f7ff; border-radius:5px;"></div>
+                <button onclick="checkSandwichAlgorithm()" class="btn">Check My Steps</button>
+                <div id="sandwich-feedback" style="display:none; margin-top:1rem; padding:1rem; background-color:#e6f7ff; border-radius:6px;"></div>
             </div>
         </div>
         
@@ -247,14 +272,13 @@
         </div>
         
         <div style="text-align: center; margin-top: 2rem;">
-            <p>Ready to start coding? Head over to our <a href="playground.html">Interactive Playground</a> to begin!</p>
-            <p>Created by Zoleka Dlamini</p>
+            <p>Ready to start coding? Head over to our <a href="playground.html" style="color: #b3541e; font-weight: bold;">Interactive Playground</a> to begin!</p>
         </div>
     </div>
     
     <footer>
-        <p>&copy; 2025 HTML Support Circle. All rights reserved.</p>
-        <p>Created by Zoleka Dlamini</p>
+        "Umuntu ngumuntu ngabantu" — We rise by lifting others.<br />
+        &copy; 2025 Zoleka | Made with Ubuntu & Love
     </footer>
 
     <script>
@@ -274,11 +298,11 @@
             if (userAnswer === correctAnswer) {
                 feedback.textContent = "✅ Correct! Great job!";
                 feedback.className = "quiz-feedback correct";
-                element.style.backgroundColor = "#d4edda";
+                element.style.backgroundColor = "#e6ffe6";
             } else {
                 feedback.textContent = `❌ Not quite! The correct answer is: ${correctAnswer}`;
                 feedback.className = "quiz-feedback incorrect";
-                element.style.backgroundColor = "#f8d7da";
+                element.style.backgroundColor = "#ffebeb";
             }
             
             feedback.style.display = "block";
