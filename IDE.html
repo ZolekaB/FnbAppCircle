@@ -1,342 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Playground | HTML Learning Hub</title>
-    <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --error: #ef233c;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            background-color: var(--dark);
-            padding: 0.8rem;
-        }
-        
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        nav li {
-            margin: 0 1rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        
-        nav a:hover {
-            background-color: var(--primary);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-        
-        .ide-container {
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 8px 8px 0 0;
-        }
-        
-        .main-content {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-        
-        .editor-area {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .tab-bar {
-            background-color: #f1f3f5;
-            display: flex;
-            padding: 0 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .tab {
-            padding: 10px 15px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-        }
-        
-        .tab.active {
-            border-bottom: 3px solid var(--primary);
-            background-color: white;
-            font-weight: bold;
-        }
-        
-        .editor {
-            flex: 1;
-            display: flex;
-            overflow: hidden;
-        }
-        
-        .code-editor {
-            flex: 1;
-            padding: 15px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 1.5;
-            border: none;
-            resize: none;
-            outline: none;
-            background-color: white;
-            color: #333;
-        }
-        
-        .preview {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background-color: white;
-            border-left: 1px solid #ddd;
-        }
-        
-        .btn {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .btn-warning {
-            background-color: var(--warning);
-            color: white;
-        }
-        
-        .status-bar {
-            background-color: var(--dark);
-            color: white;
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-            border-radius: 0 0 8px 8px;
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        @media (max-width: 768px) {
-            .editor {
-                flex-direction: column;
-            }
-            
-            .preview {
-                border-left: none;
-                border-top: 1px solid #ddd;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav li {
-                margin: 0.3rem 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Interactive HTML Playground</h1>
-        <p>Practice HTML with live preview - see your code come to life instantly!</p>
-    </header>
-    
-   <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-			     <li><a href="learn.html">Learn</a></li>
-            <li><a href="lessons.html">HTML Lessons</a></li>
-            <li><a href="playground.html">Interactive Playground</a></li>
-            <li><a href="challenges.html">Coding Challenges</a></li>
-            <li><a href="beginner.html">Beginner's Guide</a></li>
-            <li><a href="IDE.html">IDE</a></li>
-			
-        </ul>
-    </nav>
-    
-    <div class="container">
-        <div class="ide-container">
-            <div class="header">
-                <div class="logo">HTML Playground</div>
-                <div>
-                    <button class="btn btn-primary" onclick="runCode()">▶ Run Code</button>
-                    <button class="btn btn-warning" onclick="resetCode()">↻ Reset</button>
-                </div>
-            </div>
-            
-            <div class="main-content">
-                <div class="editor-area">
-                    <div class="tab-bar">
-                        <div class="tab active">index.html</div>
-                    </div>
-                    
-                    <div class="editor">
-                        <textarea id="html-editor" class="code-editor"><!DOCTYPE html>
-<html>
-<head>
-    <title>My First Web Page</title>
-</head>
-<body>
-    <h1>Welcome to My Page</h1>
-    <p>Edit this code to see live changes!</p>
-</body>
-</html></textarea>
-                        <div id="preview" class="preview"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="status-bar">
-                <div>HTML Playground</div>
-                <div id="line-col">Line 1, Col 1</div>
-            </div>
-        </div>
-        
-        <div style="margin-top: 2rem; text-align: center;">
-            <p>Try the code examples from our <a href="lessons.html">HTML Lessons</a> here to see them in action!</p>
-            <p>Created by Zoleka Dlamini</p>
-        </div>
-    </div>
-    
-    <footer>
-        <p>&copy; 2023 HTML Learning Hub. All rights reserved.</p>
-        <p>Created by Zoleka Dlamini</p>
-    </footer>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zoleka's Smart IDE</title>
 
-    <script>
-        // Initialize the IDE
-        document.addEventListener('DOMContentLoaded', function() {
-            updatePreview();
-            setupEditor();
-        });
-        
-        // Set up editor with line numbers and cursor position tracking
-        function setupEditor() {
-            const editor = document.getElementById('html-editor');
-            
-            editor.addEventListener('input', function() {
-                updateLineCol();
-            });
-            
-            editor.addEventListener('click', function() {
-                updateLineCol();
-            });
-            
-            editor.addEventListener('keyup', function() {
-                updateLineCol();
-            });
-        }
-        
-        // Update line and column position
-        function updateLineCol() {
-            const editor = document.getElementById('html-editor');
-            const cursorPos = editor.selectionStart;
-            const text = editor.value.substr(0, cursorPos);
-            const lines = text.split('\n');
-            const line = lines.length;
-            const col = lines[lines.length - 1].length + 1;
-            
-            document.getElementById('line-col').textContent = `Line ${line}, Col ${col}`;
-        }
-        
-        // Update the preview
-        function updatePreview() {
-            const htmlCode = document.getElementById('html-editor').value;
-            document.getElementById('preview').innerHTML = htmlCode;
-        }
-        
-        // Run the code (same as update preview)
-        function runCode() {
-            updatePreview();
-        }
-        
-        // Reset the code to default
-        function resetCode() {
-            document.getElementById('html-editor').value = `<!DOCTYPE html>
-<html>
-<head>
-    <title>My First Web Page</title>
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/monokai.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #1f1f1f, #4d2600);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      margin: 0;
+    }
+
+    nav {
+      background-color: #1f1f1f;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff9900;
+    }
+
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .editor-panel {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .preview-panel {
+      flex: 1;
+      min-width: 350px;
+    }
+
+    .CodeMirror {
+      height: 200px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 1rem;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 1rem;
+    }
+
+    button, select {
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #ff9900;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #cc7a00;
+    }
+
+    select {
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #2f2f2f;
+      color: #fff;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Page</h1>
-    <p>Edit this code to see live changes!</p>
-</body>
-</html>`;
-            updatePreview();
-        }
-    </script>
+
+  <header>
+    <h1>FNB App Academy Playground</h1>
+    <p>Code smarter with Zoleka's custom IDE – now with templates & auto-save 💡</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="lessons.html">HTML Lessons</a></li>
+      <li><a href="playground.html">Interactive Playground</a></li>
+      <li><a href="challenges.html">Coding Challenges</a></li>
+      <li><a href="beginner.html">Beginner's Guide</a></li>
+      <li><a href="IDE.html">IDE</a></li>
+    </ul>
+  </nav>
+
+  <div class="controls">
+    <button onclick="runCode()">▶️ Run Code</button>
+    <button onclick="resetCode()">🔄 Reset</button>
+
+    <select id="templateSelector" onchange="insertTemplate(this.value)">
+      <option value="">📌 Insert Template</option>
+      <option value="img">Add Image Tag</option>
+      <option value="link">Add Link</option>
+      <option value="button">Add Button with JS</option>
+      <option value="starter">Reset to Basic Template</option>
+    </select>
+  </div>
+
+  <div class="main">
+    <div class="editor-panel">
+      <label for="html-code">HTML</label>
+      <textarea id="html-code"></textarea>
+
+      <label for="css-code">CSS</label>
+      <textarea id="css-code"></textarea>
+
+      <label for="js-code">JavaScript</label>
+      <textarea id="js-code"></textarea>
+    </div>
+
+    <div class="preview-panel">
+      <h3>Live Preview</h3>
+      <iframe id="output-frame"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    "Umuntu ngumuntu ngabantu." Let's grow together.<br>&copy; 2025 Zoleka | FNB App Academy
+  </footer>
+
+  <!-- CodeMirror Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+
+  <script>
+    const htmlEditor = CodeMirror.fromTextArea(document.getElementById("html-code"), {
+      mode: "htmlmixed",
+      lineNumbers: true,
+      theme: "monokai"
+    });
+
+    const cssEditor = CodeMirror.fromTextArea(document.getElementById("css-code"), {
+      mode: "css",
+      lineNumbers: true,
+      theme: "monokai"
+    });
+
+    const jsEditor = CodeMirror.fromTextArea(document.getElementById("js-code"), {
+      mode: "javascript",
+      lineNumbers: true,
+      theme: "monokai"
+    });
+
+    function runCode() {
+      const html = htmlEditor.getValue();
+      const css = `<style>${cssEditor.getValue()}</style>`;
+      const js = `<script>${jsEditor.getValue()}<\/script>`;
+      const finalCode = html + css + js;
+      document.getElementById("output-frame").srcdoc = finalCode;
+
+      localStorage.setItem("html", html);
+      localStorage.setItem("css", cssEditor.getValue());
+      localStorage.setItem("js", jsEditor.getValue());
+    }
+
+    function resetCode() {
+      const starterHTML = "<h1>Welcome!</h1>\n<p>This is your starter HTML.</p>";
+      const starterCSS = "body { background: #fdf6e3; font-family: sans-serif; }\nh1 { color: #b3541e; }";
+      const starterJS = "console.log('Hello from JS!');";
+
+      htmlEditor.setValue(starterHTML);
+      cssEditor.setValue(starterCSS);
+      jsEditor.setValue(starterJS);
+
+      runCode();
+    }
+
+    function insertTemplate(value) {
+      if (value === "img") {
+        htmlEditor.replaceSelection('<img src="images/boat.jpg" alt="Boat" width="300" />');
+      } else if (value === "link") {
+        htmlEditor.replaceSelection('<a href="https://www.google.com" target="_blank">Visit Google</a>');
+      } else if (value === "button") {
+        htmlEditor.replaceSelection('<button onclick="myFunction()">Click Me</button>');
+        jsEditor.replaceSelection("function myFunction() {\n  alert('Hello!');\n}");
+      } else if (value === "starter") {
+        resetCode();
+      }
+      document.getElementById('templateSelector').value = '';
+    }
+
+    function restoreSavedCode() {
+      if (localStorage.getItem("html")) htmlEditor.setValue(localStorage.getItem("html"));
+      if (localStorage.getItem("css")) cssEditor.setValue(localStorage.getItem("css"));
+      if (localStorage.getItem("js")) jsEditor.setValue(localStorage.getItem("js"));
+      runCode();
+    }
+
+    window.onload = restoreSavedCode;
+  </script>
 </body>
 </html>
