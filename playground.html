@@ -5,36 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Playground IDE</title>
     <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --error: #ef233c;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #e9ecef;
-            color: var(--dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #fff8f1, #ffe6cc);
+            color: #333;
+            line-height: 1.6;
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem;
+            background: linear-gradient(to right, #2f2f2f, #4d2600);
+            color: #fff;
+            padding: 2rem 1rem;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        header p {
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
         nav {
-            background-color: var(--dark);
-            padding: 0.8rem;
+            background-color: #1f1f1f;
+            padding: 1rem;
         }
         
         nav ul {
@@ -44,58 +43,40 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 2rem;
         }
         
         nav li {
-            margin: 0 1rem;
+            margin: 0;
         }
         
         nav a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: color 0.3s;
         }
         
         nav a:hover {
-            background-color: var(--primary);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-        
-        .ide-container {
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 8px 8px 0 0;
+            color: #ff9900;
         }
         
         .ide-container {
             display: flex;
             flex-direction: column;
             height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 2px solid #eee;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in;
         }
         
         .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(to right, #2f2f2f, #4d2600);
             color: white;
             padding: 15px;
             display: flex;
@@ -117,8 +98,8 @@
         
         .sidebar {
             width: 250px;
-            background-color: white;
-            border-right: 1px solid #ddd;
+            background-color: #fff;
+            border-right: 1px solid #eee;
             overflow-y: auto;
             padding: 15px;
         }
@@ -130,22 +111,24 @@
         }
         
         .tab-bar {
-            background-color: #f1f3f5;
+            background-color: #f9f9f9;
             display: flex;
             padding: 0 10px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #eee;
         }
         
         .tab {
             padding: 10px 15px;
             cursor: pointer;
             border-bottom: 3px solid transparent;
+            transition: all 0.3s;
         }
         
         .tab.active {
-            border-bottom: 3px solid var(--primary);
+            border-bottom: 3px solid #ff9900;
             background-color: white;
             font-weight: bold;
+            color: #b3541e;
         }
         
         .editor {
@@ -165,6 +148,7 @@
             outline: none;
             background-color: white;
             color: #333;
+            border-right: 1px solid #eee;
         }
         
         .preview {
@@ -172,53 +156,68 @@
             padding: 15px;
             overflow-y: auto;
             background-color: white;
-            border-left: 1px solid #ddd;
         }
         
         .activity-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            border-color: #ff9900;
         }
         
         .activity-card h3 {
             margin-top: 0;
-            color: var(--primary);
+            color: #b3541e;
+            font-size: 1.2rem;
         }
         
         .btn {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background-color: #ff9900;
+            color: #fff;
             font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
             margin-right: 10px;
             margin-bottom: 10px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .btn:hover {
+            background-color: #cc7a00;
         }
         
         .btn-primary {
-            background-color: var(--primary);
-            color: white;
+            background-color: #ff9900;
         }
         
         .btn-success {
-            background-color: var(--success);
-            color: white;
+            background-color: #4CAF50;
         }
         
         .btn-warning {
-            background-color: var(--warning);
-            color: white;
+            background-color: #f8961e;
         }
         
         .challenge {
-            background-color: #e9ecef;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-            font-size: 0.9rem;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-left: 3px solid #ff9900;
         }
         
         .tooltip {
@@ -230,7 +229,7 @@
         .tooltip .tooltiptext {
             visibility: hidden;
             width: 200px;
-            background-color: var(--dark);
+            background-color: #2f2f2f;
             color: #fff;
             text-align: center;
             border-radius: 6px;
@@ -250,12 +249,43 @@
         }
         
         .status-bar {
-            background-color: var(--dark);
+            background-color: #2f2f2f;
             color: white;
-            padding: 5px 10px;
+            padding: 8px 15px;
             font-size: 0.8rem;
             display: flex;
             justify-content: space-between;
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            border-left: 4px solid #f44336;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         @media (max-width: 768px) {
@@ -265,7 +295,9 @@
             
             .sidebar {
                 width: 100%;
-                height: 200px;
+                height: 250px;
+                border-right: none;
+                border-bottom: 1px solid #eee;
             }
             
             .editor {
@@ -274,34 +306,44 @@
             
             .preview {
                 border-left: none;
-                border-top: 1px solid #ddd;
+                border-top: 1px solid #eee;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>HTML Playground IDE</h1>
+        <p>Practice your HTML in real-time with this interactive editor</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Learn.html">Learn</a></li>
+            <li><a href="lessons.html">HTML Lessons</a></li>
+            <li><a href="playground.html">Interactive Playground</a></li>
+            <li><a href="challenges.html">Coding Challenges</a></li>
+            <li><a href="beginner.html">Beginner's Guide</a></li>
+            <li><a href="IDE.html">IDE</a></li>
+        </ul>
+    </nav>
+    
     <div class="ide-container">
-	 <div class="header">
-            <div class="logo">HTML Playground IDE</div>
+        <div class="header">
+            <div class="logo">HTML Playground</div>
             <div>
                 <button class="btn btn-primary" onclick="runCode()">▶ Run Code</button>
                 <button class="btn btn-warning" onclick="resetCode()">↻ Reset</button>
             </div>
         </div>
         
-	<nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-			     <li><a href="learn.html">Learn</a></li>
-            <li><a href="lessons.html">HTML Lessons</a></li>
-            <li><a href="playground.html">Interactive Playground</a></li>
-            <li><a href="challenges.html">Coding Challenges</a></li>
-            <li><a href="beginner.html">Beginner's Guide</a></li>
-            <li><a href="IDE.html">IDE</a></li>
-			
-        </ul>
-    </nav>
-       
         <div class="main-content">
             <div class="sidebar">
                 <h2>📚 Learning Activities</h2>
@@ -315,7 +357,7 @@
                     </div>
                     <button class="btn btn-primary" onclick="loadActivity('structure')">Load Example</button>
                     <button class="btn btn-success" onclick="checkStructure()">Check Work</button>
-                    <div id="structure-feedback" style="margin-top:10px; display:none;"></div>
+                    <div id="structure-feedback" class="feedback"></div>
                 </div>
                 
                 <!-- Activity 2: Headings -->
@@ -327,7 +369,7 @@
                     </div>
                     <button class="btn btn-primary" onclick="loadActivity('headings')">Load Example</button>
                     <button class="btn btn-success" onclick="checkHeadings()">Check Work</button>
-                    <div id="headings-feedback" style="margin-top:10px; display:none;"></div>
+                    <div id="headings-feedback" class="feedback"></div>
                 </div>
                 
                 <!-- Activity 3: Paragraphs -->
@@ -377,7 +419,7 @@
                     </div>
                     <button class="btn btn-primary" onclick="loadActivity('lists')">Load Example</button>
                     <button class="btn btn-success" onclick="checkLists()">Check Work</button>
-                    <div id="lists-feedback" style="margin-top:10px; display:none;"></div>
+                    <div id="lists-feedback" class="feedback"></div>
                 </div>
             </div>
             
@@ -408,6 +450,11 @@
         </div>
     </div>
 
+    <footer>
+        <p>&copy; 2025 Zoleka's Coding Corner. All rights reserved.</p>
+        <p>Created with Ubuntu & Love</p>
+    </footer>
+
     <script>
         // Initialize the IDE
         document.addEventListener('DOMContentLoaded', function() {
@@ -421,6 +468,7 @@
             
             editor.addEventListener('input', function() {
                 updateLineCol();
+                updatePreview();
             });
             
             editor.addEventListener('click', function() {
@@ -585,9 +633,11 @@
                 code.includes('<html>') && 
                 code.includes('<head>') && 
                 code.includes('<body>')) {
-                feedback.innerHTML = '<span style="color:var(--success)">✅ Perfect! You have all the required HTML structure elements!</span>';
+                feedback.innerHTML = '✅ Perfect! You have all the required HTML structure elements!';
+                feedback.className = 'feedback success';
             } else {
-                feedback.innerHTML = '<span style="color:var(--error)">❌ Almost there! Make sure you have: &lt;!DOCTYPE html&gt;, &lt;html&gt;, &lt;head&gt;, and &lt;body&gt; tags.</span>';
+                feedback.innerHTML = '❌ Almost there! Make sure you have: &lt;!DOCTYPE html&gt;, &lt;html&gt;, &lt;head&gt;, and &lt;body&gt; tags.';
+                feedback.className = 'feedback error';
             }
             
             feedback.style.display = 'block';
@@ -605,9 +655,11 @@
             }
             
             if (missing.length === 0) {
-                feedback.innerHTML = '<span style="color:var(--success)">✅ Excellent! You have all heading levels from h1 to h6!</span>';
+                feedback.innerHTML = '✅ Excellent! You have all heading levels from h1 to h6!';
+                feedback.className = 'feedback success';
             } else {
-                feedback.innerHTML = `<span style="color:var(--error)">❌ Missing heading levels: ${missing.join(', ')}. Add these to complete the challenge!</span>`;
+                feedback.innerHTML = `❌ Missing heading levels: ${missing.join(', ')}. Add these to complete the challenge!`;
+                feedback.className = 'feedback error';
             }
             
             feedback.style.display = 'block';
@@ -620,13 +672,17 @@
             let hasOrdered = code.includes('<ol>') && code.includes('<li>');
             
             if (hasUnordered && hasOrdered) {
-                feedback.innerHTML = '<span style="color:var(--success)">✅ Perfect! You have both unordered (ul) and ordered (ol) lists!</span>';
+                feedback.innerHTML = '✅ Perfect! You have both unordered (ul) and ordered (ol) lists!';
+                feedback.className = 'feedback success';
             } else if (hasUnordered) {
-                feedback.innerHTML = '<span style="color:var(--warning)">⚠️ You have an unordered list (ul), but need an ordered list (ol) too!</span>';
+                feedback.innerHTML = '⚠️ You have an unordered list (ul), but need an ordered list (ol) too!';
+                feedback.className = 'feedback error';
             } else if (hasOrdered) {
-                feedback.innerHTML = '<span style="color:var(--warning)">⚠️ You have an ordered list (ol), but need an unordered list (ul) too!</span>';
+                feedback.innerHTML = '⚠️ You have an ordered list (ol), but need an unordered list (ul) too!';
+                feedback.className = 'feedback error';
             } else {
-                feedback.innerHTML = '<span style="color:var(--error)">❌ You need both unordered (ul) and ordered (ol) lists to complete this challenge!</span>';
+                feedback.innerHTML = '❌ You need both unordered (ul) and ordered (ol) lists to complete this challenge!';
+                feedback.className = 'feedback error';
             }
             
             feedback.style.display = 'block';
