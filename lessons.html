@@ -3,65 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Lessons | HTML Learning Hub</title>
+    <title>HTML Lessons | Zoleka's Guide</title>
     <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --error: #ef233c;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: var(--dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #fff8f1, #ffe6cc);
+            color: #333;
             line-height: 1.6;
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem;
+            background: linear-gradient(to right, #2f2f2f, #4d2600);
+            color: #fff;
+            padding: 2rem 1rem;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        nav {
-            background-color: var(--dark);
-            padding: 0.8rem;
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
         }
         
+        header p {
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
         nav ul {
-            list-style-type: none;
+            list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-wrap: wrap;
+            gap: 2rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
-        
+
         nav li {
-            margin: 0 1rem;
+            margin: 0;
         }
-        
+
+        nav {
+            background-color: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+        }
+
         nav a {
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: color 0.3s;
         }
-        
+
         nav a:hover {
-            background-color: var(--primary);
+            color: #ff9900;
         }
         
         .container {
@@ -73,14 +72,14 @@
         .tabs {
             display: flex;
             flex-wrap: wrap;
-            background-color: #333;
-            border-radius: 5px 5px 0 0;
+            background-color: #1f1f1f;
+            border-radius: 8px 8px 0 0;
             overflow: hidden;
         }
         
         .tab {
             padding: 1rem 1.5rem;
-            background-color: #555;
+            background-color: #2f2f2f;
             color: white;
             cursor: pointer;
             font-weight: bold;
@@ -88,20 +87,21 @@
         }
         
         .tab:hover {
-            background-color: #777;
+            background-color: #4d2600;
         }
         
         .tab.active {
-            background-color: var(--primary);
+            background-color: #b3541e;
         }
         
         .tab-content {
             display: none;
             padding: 1.5rem;
             background-color: white;
-            border: 1px solid #ddd;
+            border: 1px solid #eee;
             border-top: none;
-            border-radius: 0 0 5px 5px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         
         .tab-content.active {
@@ -109,9 +109,13 @@
         }
         
         h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
+            color: #b3541e;
+            border-bottom: 2px solid #ff9900;
             padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #4d2600;
         }
         
         code {
@@ -133,21 +137,46 @@
             padding: 1rem;
             border-left: 4px solid #FFD600;
             margin: 1rem 0;
+            border-radius: 4px;
         }
         
         .tip {
             background-color: #E8F5E9;
             padding: 1rem;
-            border-left: 4px solid var(--success);
+            border-left: 4px solid #4CAF50;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        img.example {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
             margin: 1rem 0;
         }
         
-        footer {
-            background-color: var(--dark);
+        .btn {
+            display: inline-block;
+            background-color: #ff9900;
             color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #cc7a00;
+        }
+        
+        footer {
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 2rem 1rem;
+            background: #2f2f2f;
+            color: #fff;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
@@ -157,12 +186,7 @@
             }
             
             nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav li {
-                margin: 0.3rem 0;
+                gap: 1rem;
             }
         }
     </style>
@@ -172,18 +196,19 @@
         <h1>HTML Lessons</h1>
         <p>Step-by-step tutorials to learn HTML from scratch</p>
     </header>
-   <nav>
+    
+    <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-			     <li><a href="learn.html">Learn</a></li>
+            <li><a href="learn.html">Learn</a></li>
             <li><a href="lessons.html">HTML Lessons</a></li>
             <li><a href="playground.html">Interactive Playground</a></li>
             <li><a href="challenges.html">Coding Challenges</a></li>
             <li><a href="beginner.html">Beginner's Guide</a></li>
             <li><a href="IDE.html">IDE</a></li>
-			
         </ul>
     </nav>
+    
     <div class="container">
         <div class="tabs">
             <div class="tab active" onclick="openTab(event, 'welcome')">Welcome</div>
@@ -202,7 +227,7 @@
             <div class="tab" onclick="openTab(event, 'lesson13')">Lesson 13: Image Links</div>
         </div>
         
-       <!-- Welcome Tab -->
+        <!-- Welcome Tab -->
         <div id="welcome" class="tab-content active">
             <h2>Welcome to HTML Learning!</h2>
             <p>Hello future web developer! 👋</p>
@@ -267,265 +292,6 @@
                 <p><strong>Download VS Code:</strong> <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></p>
                 <p>Note: VS Code works on Windows and Mac computers, but not on phones or tablets.</p>
             </div>
-			
-			    <div class="container">
-        <div class="tabs">
-            <div class="tab active" onclick="openTab(event, 'thinking')">Thinking Like a Developer</div>
-            <div class="tab" onclick="openTab(event, 'pseudocode')">Pseudocode</div>
-            <div class="tab" onclick="openTab(event, 'algorithms')">Algorithms</div>
-            <div class="tab" onclick="openTab(event, 'sdlc')">SDLC</div>
-            <div class="tab" onclick="openTab(event, 'resources')">Resources</div>
-        </div>
-        
-        <!-- Thinking Like a Developer Tab -->
-        <div id="thinking" class="tab-content active">
-            <h2>Thinking Like a Developer</h2>
-            
-            <div class="analogy">
-                <h3>What is Development?</h3>
-                <p>Imagine you're building a Lego house. Development is similar:</p>
-                <ul>
-                    <li>You start with a plan (what the house should look like)</li>
-                    <li>You break it into small pieces (walls, roof, doors)</li>
-                    <li>You build each piece step by step</li>
-                    <li>You check if everything fits together</li>
-                </ul>
-                <p>Software development is the same - we build digital things piece by piece!</p>
-            </div>
-            
-            <h3>How Developers Think</h3>
-            <p>Developers solve problems in a special way:</p>
-            
-            <div class="steps">
-                <h4>1. Understand the Problem</h4>
-                <p>Example: "I need a website that shows my art portfolio"</p>
-                
-                <h4>2. Break It Down</h4>
-                <p>- A homepage with my name<br>
-                - A gallery page for my art<br>
-                - A contact page</p>
-                
-                <h4>3. Solve Small Pieces</h4>
-                <p>- First make the homepage<br>
-                - Then make the gallery<br>
-                - Then make the contact page</p>
-                
-                <h4>4. Put It All Together</h4>
-                <p>Connect the pages and test everything works</p>
-            </div>
-            
-            <div class="tip">
-                <h3>Developer Mindset Tips:</h3>
-                <ul>
-                    <li>There's always more than one way to solve a problem</li>
-                    <li>Start simple, then add complexity</li>
-                    <li>Expect to make mistakes - they help you learn!</li>
-                    <li>Google is your friend - all developers search for help</li>
-                </ul>
-            </div>
-            
-            <h3>What You'll Learn in This Course</h3>
-            <ol>
-                <li><strong>HTML</strong> - The building blocks of websites (like Lego bricks)</li>
-                <li><strong>CSS</strong> - Making your websites look beautiful (like paint and decorations)</li>
-                <li><strong>Development Skills</strong> - How to plan and build like a pro</li>
-            </ol>
-        </div>
-        
-        <!-- Pseudocode Tab -->
-        <div id="pseudocode" class="tab-content">
-            <h2>Pseudocode - Thinking Before Coding</h2>
-            
-            <div class="analogy">
-                <p>Pseudocode is like writing a recipe in plain English before you cook. It helps you plan your code without worrying about the exact programming words.</p>
-            </div>
-            
-            <h3>Example: Making a Sandwich</h3>
-            <p>Real instructions vs. pseudocode:</p>
-            
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                <div style="flex: 1; min-width: 250px;">
-                    <h4>Normal Instructions</h4>
-                    <ol>
-                        <li>Take two slices of bread</li>
-                        <li>Spread butter on one slice</li>
-                        <li>Add cheese on top of the butter</li>
-                        <li>Put the other slice on top</li>
-                    </ol>
-                </div>
-                
-                <div style="flex: 1; min-width: 250px;">
-                    <h4>Pseudocode</h4>
-                    <pre style="background-color: #f0f0f0; padding: 1rem;">
-BEGIN MakeSandwich
-    GET breadSlice1, breadSlice2
-    SPREAD butter ON breadSlice1
-    PUT cheese ON breadSlice1
-    PUT breadSlice2 ON TOP
-END MakeSandwich</pre>
-                </div>
-            </div>
-            
-            <h3>Why Use Pseudocode?</h3>
-            <ul>
-                <li>Helps you think through the steps</li>
-                <li>Easier to understand than real code</li>
-                <li>Can be turned into any programming language</li>
-                <li>Great for planning with teammates</li>
-            </ul>
-            
-            <div class="note">
-                <h3>Try It Yourself:</h3>
-                <p>Write pseudocode for making a cup of tea:</p>
-                <pre style="background-color: white; border: 1px dashed #333; min-height: 100px;">
-BEGIN MakeTea
-    [Your steps here]
-END MakeTea</pre>
-            </div>
-        </div>
-        
-        <!-- Algorithms Tab -->
-        <div id="algorithms" class="tab-content">
-            <h2>Algorithms - Step-by-Step Solutions</h2>
-            
-            <div class="analogy">
-                <p>An algorithm is like a recipe for solving a problem. It's a clear set of instructions to get from the problem to the solution.</p>
-            </div>
-            
-            <h3>Simple Algorithm Example</h3>
-            <p><strong>Problem:</strong> Determine if a number is even or odd</p>
-            
-            <div class="steps">
-                <h4>Algorithm Steps:</h4>
-                <ol>
-                    <li>Get a number from the user</li>
-                    <li>Divide the number by 2</li>
-                    <li>If there's no remainder, it's even</li>
-                    <li>If there is a remainder, it's odd</li>
-                    <li>Tell the user the result</li>
-                </ol>
-            </div>
-            
-            <h3>Algorithm Characteristics</h3>
-            <ul>
-                <li><strong>Clear:</strong> Each step is easy to understand</li>
-                <li><strong>Finite:</strong> It has a clear ending</li>
-                <li><strong>Effective:</strong> It actually solves the problem</li>
-                <li><strong>General:</strong> Works for different inputs</li>
-            </ul>
-            
-            <div class="tip">
-                <h3>Everyday Algorithms</h3>
-                <p>You use algorithms every day without realizing:</p>
-                <ul>
-                    <li>Following a recipe</li>
-                    <li>Getting dressed (underwear before pants!)</li>
-                    <li>Brushing your teeth</li>
-                </ul>
-            </div>
-            
-            <h3>Practice: Morning Routine Algorithm</h3>
-            <p>Write the steps for your morning routine as an algorithm:</p>
-            <pre style="background-color: white; border: 1px dashed #333; min-height: 100px;">
-BEGIN MorningRoutine
-    1. Wake up
-    2. [Your next step]
-    ...
-END MorningRoutine</pre>
-        </div>
-        
-        <!-- SDLC Tab -->
-        <div id="sdlc" class="tab-content">
-            <h2>Software Development Life Cycle (SDLC)</h2>
-            
-            <div class="analogy">
-                <p>Building software is like building a house. You need a plan, builders, and checks to make sure everything works.</p>
-            </div>
-            
-            <h3>The 5 Main Steps of SDLC</h3>
-            
-            <div class="steps">
-                <h4>1. Planning</h4>
-                <p>- What are we building?<br>
-                - Who is it for?<br>
-                - What features do we need?</p>
-                
-                <h4>2. Design</h4>
-                <p>- How will it look?<br>
-                - How will users interact with it?<br>
-                - What technologies will we use?</p>
-                
-                <h4>3. Development</h4>
-                <p>- Writing the actual code<br>
-                - Building each feature<br>
-                - Creating tests</p>
-                
-                <h4>4. Testing</h4>
-                <p>- Does everything work?<br>
-                - Are there any bugs?<br>
-                - Is it easy to use?</p>
-                
-                <h4>5. Deployment & Maintenance</h4>
-                <p>- Release to users<br>
-                - Fix any issues that come up<br>
-                - Add new features over time</p>
-            </div>
-            
-            <h3>Why SDLC Matters</h3>
-            <ul>
-                <li>Helps avoid mistakes and wasted time</li>
-                <li>Makes sure we build what users actually need</li>
-                <li>Helps teams work together effectively</li>
-                <li>Results in higher quality software</li>
-            </ul>
-            
-            <div class="note">
-                <h3>Your First Project SDLC</h3>
-                <p>When you build your first website:</p>
-                <ol>
-                    <li><strong>Plan:</strong> Sketch what pages you need</li>
-                    <li><strong>Design:</strong> Draw how each page should look</li>
-                    <li><strong>Develop:</strong> Write the HTML/CSS code</li>
-                    <li><strong>Test:</strong> Click all links, try on phone/computer</li>
-                    <li><strong>Deploy:</strong> Upload to GitHub or a web host</li>
-                </ol>
-            </div>
-        </div>
-        
-        <!-- Resources Tab -->
-        <div id="resources" class="tab-content">
-            <h2>Learning Resources</h2>
-            
-            <h3>Live Lectures</h3>
-            <p>Join our live lectures every Tuesday and Friday from 11:00 to 13:00:</p>
-            <a href="https://appoftheyear.co.za/" class="btn">Join Live Lecture</a>
-            <p>Recordings will be available if you can't attend live.</p>
-            
-            <h3>Recommended Tools</h3>
-            <ul>
-                <li><strong>VS Code:</strong> <a href="https://code.visualstudio.com/" target="_blank">Free code editor</a></li>
-                <li><strong>GitHub:</strong> <a href="https://github.com/" target="_blank">For saving and sharing your code</a></li>
-                <li><strong>CodePen:</strong> <a href="https://codepen.io/" target="_blank">Online HTML/CSS playground</a></li>
-            </ul>
-            
-            <h3>Practice Websites</h3>
-            <ul>
-                <li><a href="full_html_playground.html">HTML Playground</a> - Experiment with code</li>
-                <li><a href="html_challenges.html">HTML Challenges</a> - Test your skills</li>
-                <li><a href="html_begin.html">HTML Basics</a> - Start from the beginning</li>
-            </ul>
-            
-            <div class="tip">
-                <h3>Tips for Success</h3>
-                <ul>
-                    <li>Code a little every day</li>
-                    <li>Don't copy-paste - type everything yourself</li>
-                    <li>When stuck, take a break then try again</li>
-                    <li>Celebrate small wins!</li>
-                </ul>
-            </div>
-        </div>
-    </div>
         </div>
         
         <!-- Lesson 2: Setting up a Workspace -->
@@ -917,12 +683,10 @@ my-website/
     </div>
     
     <footer>
-        <p>&copy; 2023 HTML Learning Hub. All rights reserved.</p>
-        <p>Created by Zoleka Dlamini</p>
+        "Umuntu ngumuntu ngabantu." Let's grow together.<br>&copy; 2025 Zoleka | FNB App Academy
     </footer>
 
     <script>
-	
         function openTab(evt, tabName) {
             // Hide all tab contents
             const tabContents = document.getElementsByClassName("tab-content");
