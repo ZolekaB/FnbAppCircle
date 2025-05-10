@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Playground | HTML Learning Hub</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --error: #ef233c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 0.8rem;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .ide-container {
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .editor-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tab-bar {
+            background-color: #f1f3f5;
+            display: flex;
+            padding: 0 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary);
+            background-color: white;
+            font-weight: bold;
+        }
+        
+        .editor {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+        
+        .code-editor {
+            flex: 1;
+            padding: 15px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            border: none;
+            resize: none;
+            outline: none;
+            background-color: white;
+            color: #333;
+        }
+        
+        .preview {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: white;
+            border-left: 1px solid #ddd;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .status-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .editor {
+                flex-direction: column;
+            }
+            
+            .preview {
+                border-left: none;
+                border-top: 1px solid #ddd;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Interactive HTML Playground</h1>
+        <p>Practice HTML with live preview - see your code come to life instantly!</p>
+    </header>
+    
+   <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+			     <li><a href="Learn.html">Learn</a></li>
+            <li><a href="lessons.html">HTML Lessons</a></li>
+            <li><a href="playground.html">Interactive Playground</a></li>
+            <li><a href="challenges.html">Coding Challenges</a></li>
+            <li><a href="beginner.html">Beginner's Guide</a></li>
+            <li><a href="IDE.html">IDE</a></li>
+			
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="ide-container">
+            <div class="header">
+                <div class="logo">HTML Playground</div>
+                <div>
+                    <button class="btn btn-primary" onclick="runCode()">▶ Run Code</button>
+                    <button class="btn btn-warning" onclick="resetCode()">↻ Reset</button>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="editor-area">
+                    <div class="tab-bar">
+                        <div class="tab active">index.html</div>
+                    </div>
+                    
+                    <div class="editor">
+                        <textarea id="html-editor" class="code-editor"><!DOCTYPE html>
+<html>
+<head>
+    <title>My First Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <p>Edit this code to see live changes!</p>
+</body>
+</html></textarea>
+                        <div id="preview" class="preview"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-bar">
+                <div>HTML Playground</div>
+                <div id="line-col">Line 1, Col 1</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+            <p>Try the code examples from our <a href="lessons.html">HTML Lessons</a> here to see them in action!</p>
+            <p>Created by Zoleka Dlamini</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 HTML Learning Hub. All rights reserved.</p>
+        <p>Created by Zoleka Dlamini</p>
+    </footer>
+
+    <script>
+        // Initialize the IDE
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePreview();
+            setupEditor();
+        });
+        
+        // Set up editor with line numbers and cursor position tracking
+        function setupEditor() {
+            const editor = document.getElementById('html-editor');
+            
+            editor.addEventListener('input', function() {
+                updateLineCol();
+            });
+            
+            editor.addEventListener('click', function() {
+                updateLineCol();
+            });
+            
+            editor.addEventListener('keyup', function() {
+                updateLineCol();
+            });
+        }
+        
+        // Update line and column position
+        function updateLineCol() {
+            const editor = document.getElementById('html-editor');
+            const cursorPos = editor.selectionStart;
+            const text = editor.value.substr(0, cursorPos);
+            const lines = text.split('\n');
+            const line = lines.length;
+            const col = lines[lines.length - 1].length + 1;
+            
+            document.getElementById('line-col').textContent = `Line ${line}, Col ${col}`;
+        }
+        
+        // Update the preview
+        function updatePreview() {
+            const htmlCode = document.getElementById('html-editor').value;
+            document.getElementById('preview').innerHTML = htmlCode;
+        }
+        
+        // Run the code (same as update preview)
+        function runCode() {
+            updatePreview();
+        }
+        
+        // Reset the code to default
+        function resetCode() {
+            document.getElementById('html-editor').value = `<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <p>Edit this code to see live changes!</p>
+</body>
+</html>`;
+            updatePreview();
+        }
+    </script>
+</body>
+</html>

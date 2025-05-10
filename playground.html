@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Playground IDE</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --error: #ef233c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            color: var(--dark);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 0.8rem;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .ide-container {
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .ide-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .editor-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tab-bar {
+            background-color: #f1f3f5;
+            display: flex;
+            padding: 0 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary);
+            background-color: white;
+            font-weight: bold;
+        }
+        
+        .editor {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+        
+        .code-editor {
+            flex: 1;
+            padding: 15px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            border: none;
+            resize: none;
+            outline: none;
+            background-color: white;
+            color: #333;
+        }
+        
+        .preview {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: white;
+            border-left: 1px solid #ddd;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .activity-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .btn-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .challenge {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .status-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .editor {
+                flex-direction: column;
+            }
+            
+            .preview {
+                border-left: none;
+                border-top: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ide-container">
+	 <div class="header">
+            <div class="logo">HTML Playground IDE</div>
+            <div>
+                <button class="btn btn-primary" onclick="runCode()">▶ Run Code</button>
+                <button class="btn btn-warning" onclick="resetCode()">↻ Reset</button>
+            </div>
+        </div>
+        
+	<nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+			     <li><a href="Learn.html">Learn</a></li>
+            <li><a href="lessons.html">HTML Lessons</a></li>
+            <li><a href="playground.html">Interactive Playground</a></li>
+            <li><a href="challenges.html">Coding Challenges</a></li>
+            <li><a href="beginner.html">Beginner's Guide</a></li>
+            <li><a href="IDE.html">IDE</a></li>
+			
+        </ul>
+    </nav>
+       
+        <div class="main-content">
+            <div class="sidebar">
+                <h2>📚 Learning Activities</h2>
+                
+                <!-- Activity 1: Basic Structure -->
+                <div class="activity-card">
+                    <h3>1. HTML Structure</h3>
+                    <p>Learn the basic skeleton of every HTML document.</p>
+                    <div class="challenge">
+                        <strong>Challenge:</strong> Create a valid HTML structure with head and body sections.
+                    </div>
+                    <button class="btn btn-primary" onclick="loadActivity('structure')">Load Example</button>
+                    <button class="btn btn-success" onclick="checkStructure()">Check Work</button>
+                    <div id="structure-feedback" style="margin-top:10px; display:none;"></div>
+                </div>
+                
+                <!-- Activity 2: Headings -->
+                <div class="activity-card">
+                    <h3>2. Headings</h3>
+                    <p>Use h1 to h6 tags to create document headings.</p>
+                    <div class="challenge">
+                        <strong>Challenge:</strong> Create a page with all 6 heading levels.
+                    </div>
+                    <button class="btn btn-primary" onclick="loadActivity('headings')">Load Example</button>
+                    <button class="btn btn-success" onclick="checkHeadings()">Check Work</button>
+                    <div id="headings-feedback" style="margin-top:10px; display:none;"></div>
+                </div>
+                
+                <!-- Activity 3: Paragraphs -->
+                <div class="activity-card">
+                    <h3>3. Paragraphs</h3>
+                    <p>Create text paragraphs with the p tag.</p>
+                    <div class="challenge">
+                        <strong>Challenge:</strong> Write 3 paragraphs about your favorite hobby.
+                    </div>
+                    <button class="btn btn-primary" onclick="loadActivity('paragraphs')">Load Example</button>
+                </div>
+                
+                <!-- Activity 4: Images -->
+                <div class="activity-card">
+                    <h3>4. Images</h3>
+                    <p>Add images to your page with the img tag.</p>
+                    <div class="challenge">
+                        <strong>Challenge:</strong> Add 2 images with different sizes.
+                    </div>
+                    <button class="btn btn-primary" onclick="loadActivity('images')">Load Example</button>
+                    <div class="tooltip" style="margin-top:10px;">
+                        💡 Image URLs to try:
+                        <span class="tooltiptext">
+                            https://picsum.photos/200<br>
+                            https://picsum.photos/300<br>
+                            https://picsum.photos/150
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Activity 5: Links -->
+                <div class="activity-card">
+                    <h3>5. Links</h3>
+                    <p>Create clickable links with the a tag.</p>
+                    <div class="challenge">
+                        <strong>Challenge:</strong> Create links to 3 different websites.
+                    </div>
+                    <button class="btn btn-primary" onclick="loadActivity('links')">Load Example</button>
+                </div>
+                
+                <!-- Activity 6: Lists -->
+                <div class="activity-card">
+                    <h3>6. Lists</h3>
+                    <p>Create ordered and unordered lists.</p>
+                    <div class="challenge">
+                        <strong>Challenge:</strong> Make a shopping list (unordered) and a top 3 movies list (ordered).
+                    </div>
+                    <button class="btn btn-primary" onclick="loadActivity('lists')">Load Example</button>
+                    <button class="btn btn-success" onclick="checkLists()">Check Work</button>
+                    <div id="lists-feedback" style="margin-top:10px; display:none;"></div>
+                </div>
+            </div>
+            
+            <div class="editor-area">
+                <div class="tab-bar">
+                    <div class="tab active">index.html</div>
+                </div>
+                
+                <div class="editor">
+                    <textarea id="html-editor" class="code-editor"><!DOCTYPE html>
+<html>
+<head>
+    <title>My First Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <p>Edit this code to complete the activities!</p>
+</body>
+</html></textarea>
+                    <div id="preview" class="preview"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-bar">
+            <div>HTML Playground</div>
+            <div id="line-col">Line 1, Col 1</div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize the IDE
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePreview();
+            setupEditor();
+        });
+        
+        // Set up editor with line numbers and cursor position tracking
+        function setupEditor() {
+            const editor = document.getElementById('html-editor');
+            
+            editor.addEventListener('input', function() {
+                updateLineCol();
+            });
+            
+            editor.addEventListener('click', function() {
+                updateLineCol();
+            });
+            
+            editor.addEventListener('keyup', function() {
+                updateLineCol();
+            });
+        }
+        
+        // Update line and column position
+        function updateLineCol() {
+            const editor = document.getElementById('html-editor');
+            const cursorPos = editor.selectionStart;
+            const text = editor.value.substr(0, cursorPos);
+            const lines = text.split('\n');
+            const line = lines.length;
+            const col = lines[lines.length - 1].length + 1;
+            
+            document.getElementById('line-col').textContent = `Line ${line}, Col ${col}`;
+        }
+        
+        // Update the preview
+        function updatePreview() {
+            const htmlCode = document.getElementById('html-editor').value;
+            document.getElementById('preview').innerHTML = htmlCode;
+        }
+        
+        // Run the code (same as update preview)
+        function runCode() {
+            updatePreview();
+        }
+        
+        // Reset the code to default
+        function resetCode() {
+            document.getElementById('html-editor').value = `<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <p>Edit this code to complete the activities!</p>
+</body>
+</html>`;
+            updatePreview();
+        }
+        
+        // Load activity examples
+        function loadActivity(activity) {
+            let exampleCode = '';
+            
+            switch(activity) {
+                case 'structure':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Document Structure</title>
+</head>
+<body>
+    <!-- Your content goes here -->
+</body>
+</html>`;
+                    break;
+                    
+                case 'headings':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Headings Example</title>
+</head>
+<body>
+    <h1>Main Heading</h1>
+    <h2>Subheading</h2>
+    <h3>Smaller Heading</h3>
+    <h4>Even Smaller</h4>
+    <h5>Quite Small</h5>
+    <h6>Tiny Heading</h6>
+</body>
+</html>`;
+                    break;
+                    
+                case 'paragraphs':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Paragraphs</title>
+</head>
+<body>
+    <p>This is my first paragraph.</p>
+    <p>This is my second paragraph.</p>
+    <p>And this is the third one!</p>
+</body>
+</html>`;
+                    break;
+                    
+                case 'images':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Images</title>
+</head>
+<body>
+    <h1>My Favorite Images</h1>
+    <img src="https://picsum.photos/200" alt="Random image">
+    <img src="https://picsum.photos/300" alt="Random image" width="200">
+</body>
+</html>`;
+                    break;
+                    
+                case 'links':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Links</title>
+</head>
+<body>
+    <h1>Useful Links</h1>
+    <p>Visit <a href="https://www.google.com">Google</a> for search.</p>
+    <p>Learn at <a href="https://www.w3schools.com">W3Schools</a>.</p>
+</body>
+</html>`;
+                    break;
+                    
+                case 'lists':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Lists</title>
+</head>
+<body>
+    <h1>My Lists</h1>
+    <h2>Shopping List</h2>
+    <ul>
+        <li>Milk</li>
+        <li>Eggs</li>
+        <li>Bread</li>
+    </ul>
+    
+    <h2>Top Movies</h2>
+    <ol>
+        <li>The Shawshank Redemption</li>
+        <li>The Godfather</li>
+        <li>Pulp Fiction</li>
+    </ol>
+</body>
+</html>`;
+                    break;
+            }
+            
+            document.getElementById('html-editor').value = exampleCode;
+            updatePreview();
+        }
+        
+        // Activity checkers
+        function checkStructure() {
+            const code = document.getElementById('html-editor').value.toLowerCase();
+            const feedback = document.getElementById('structure-feedback');
+            
+            if (code.includes('<!doctype html>') && 
+                code.includes('<html>') && 
+                code.includes('<head>') && 
+                code.includes('<body>')) {
+                feedback.innerHTML = '<span style="color:var(--success)">✅ Perfect! You have all the required HTML structure elements!</span>';
+            } else {
+                feedback.innerHTML = '<span style="color:var(--error)">❌ Almost there! Make sure you have: &lt;!DOCTYPE html&gt;, &lt;html&gt;, &lt;head&gt;, and &lt;body&gt; tags.</span>';
+            }
+            
+            feedback.style.display = 'block';
+        }
+        
+        function checkHeadings() {
+            const code = document.getElementById('html-editor').value.toLowerCase();
+            const feedback = document.getElementById('headings-feedback');
+            let missing = [];
+            
+            for (let i = 1; i <= 6; i++) {
+                if (!code.includes('<h' + i + '>')) {
+                    missing.push('h' + i);
+                }
+            }
+            
+            if (missing.length === 0) {
+                feedback.innerHTML = '<span style="color:var(--success)">✅ Excellent! You have all heading levels from h1 to h6!</span>';
+            } else {
+                feedback.innerHTML = `<span style="color:var(--error)">❌ Missing heading levels: ${missing.join(', ')}. Add these to complete the challenge!</span>`;
+            }
+            
+            feedback.style.display = 'block';
+        }
+        
+        function checkLists() {
+            const code = document.getElementById('html-editor').value.toLowerCase();
+            const feedback = document.getElementById('lists-feedback');
+            let hasUnordered = code.includes('<ul>') && code.includes('<li>');
+            let hasOrdered = code.includes('<ol>') && code.includes('<li>');
+            
+            if (hasUnordered && hasOrdered) {
+                feedback.innerHTML = '<span style="color:var(--success)">✅ Perfect! You have both unordered (ul) and ordered (ol) lists!</span>';
+            } else if (hasUnordered) {
+                feedback.innerHTML = '<span style="color:var(--warning)">⚠️ You have an unordered list (ul), but need an ordered list (ol) too!</span>';
+            } else if (hasOrdered) {
+                feedback.innerHTML = '<span style="color:var(--warning)">⚠️ You have an ordered list (ol), but need an unordered list (ul) too!</span>';
+            } else {
+                feedback.innerHTML = '<span style="color:var(--error)">❌ You need both unordered (ul) and ordered (ol) lists to complete this challenge!</span>';
+            }
+            
+            feedback.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

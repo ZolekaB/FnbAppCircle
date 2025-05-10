@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Lessons | HTML Learning Hub</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --error: #ef233c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 0.8rem;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #333;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+        }
+        
+        .tab {
+            padding: 1rem 1.5rem;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .tab:hover {
+            background-color: #777;
+        }
+        
+        .tab.active {
+            background-color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 1.5rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        .note {
+            background-color: #FFF9C4;
+            padding: 1rem;
+            border-left: 4px solid #FFD600;
+            margin: 1rem 0;
+        }
+        
+        .tip {
+            background-color: #E8F5E9;
+            padding: 1rem;
+            border-left: 4px solid var(--success);
+            margin: 1rem 0;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tab {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML Lessons</h1>
+        <p>Step-by-step tutorials to learn HTML from scratch</p>
+    </header>
+   <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+			     <li><a href="Learn.html">Learn</a></li>
+            <li><a href="lessons.html">HTML Lessons</a></li>
+            <li><a href="playground.html">Interactive Playground</a></li>
+            <li><a href="challenges.html">Coding Challenges</a></li>
+            <li><a href="beginner.html">Beginner's Guide</a></li>
+            <li><a href="IDE.html">IDE</a></li>
+			
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'welcome')">Welcome</div>
+            <div class="tab" onclick="openTab(event, 'lesson1')">Lesson 1: Basics</div>
+            <div class="tab" onclick="openTab(event, 'lesson2')">Lesson 2: Setup</div>
+            <div class="tab" onclick="openTab(event, 'lesson3')">Lesson 3: Paragraphs</div>
+            <div class="tab" onclick="openTab(event, 'lesson4')">Lesson 4: Headings</div>
+            <div class="tab" onclick="openTab(event, 'lesson5')">Lesson 5: File Types</div>
+            <div class="tab" onclick="openTab(event, 'lesson6')">Lesson 6: Images</div>
+            <div class="tab" onclick="openTab(event, 'lesson7')">Lesson 7: Resizing</div>
+            <div class="tab" onclick="openTab(event, 'lesson8')">Lesson 8: More Images</div>
+            <div class="tab" onclick="openTab(event, 'lesson9')">Lesson 9: Links</div>
+            <div class="tab" onclick="openTab(event, 'lesson10')">Lesson 10: Second Page</div>
+            <div class="tab" onclick="openTab(event, 'lesson11')">Lesson 11: Linking</div>
+            <div class="tab" onclick="openTab(event, 'lesson12')">Lesson 12: Image Page</div>
+            <div class="tab" onclick="openTab(event, 'lesson13')">Lesson 13: Image Links</div>
+        </div>
+        
+       <!-- Welcome Tab -->
+        <div id="welcome" class="tab-content active">
+            <h2>Welcome to HTML Learning!</h2>
+            <p>Hello future web developer! 👋</p>
+            <p>This website will teach you how to create web pages using HTML, the language that makes websites work.</p>
+            
+            <div class="note">
+                <h3>How to use this website:</h3>
+                <ul>
+                    <li>Click on the tabs above to go to different lessons</li>
+                    <li>Start with Lesson 1 and go in order</li>
+                    <li>Take your time with each lesson</li>
+                    <li>Try the code examples yourself</li>
+                </ul>
+            </div>
+            
+            <div class="tip">
+                <h3>Live Lectures</h3>
+                <p>Join our live lectures every Tuesday and Friday from 11:00 to 13:00:</p>
+                <a href="https://appoftheyear.co.za/" class="btn">Join Live Lecture</a>
+                <p>Recordings will be available if you can't attend live.</p>
+            </div>
+            
+            <h3>What You'll Learn:</h3>
+            <ul>
+                <li>How to create web pages with text and images</li>
+                <li>How to link pages together</li>
+                <li>How to organize your files</li>
+                <li>And much more!</li>
+            </ul>
+            
+            <p>By the end of these lessons, you'll have built 2 complete apps!</p>
+        </div>
+        
+        <!-- Lesson 1: HTML Basics -->
+        <div id="lesson1" class="tab-content">
+            <h2>Lesson 1: Introduction to HTML</h2>
+            
+            <h3>What is HTML?</h3>
+            <p>HTML is like the skeleton of a webpage. Just like your bones give your body shape, HTML gives a webpage its structure.</p>
+            
+            <p>HTML stands for <strong>Hyper Text Markup Language</strong>.</p>
+            
+            <div class="note">
+                <p><strong>Fun Fact:</strong> Every website you visit is made with HTML!</p>
+            </div>
+            
+            <h3>HTML5</h3>
+            <p>HTML5 is the newest version of HTML. It's like getting the newest version of your favorite game - it has more features!</p>
+            
+            <h3>Why is HTML5 great?</h3>
+            <ol>
+                <li>Works with videos and sounds</li>
+                <li>Easy for people to read and computers to understand</li>
+                <li>Works well on phones and tablets</li>
+                <li>Can make apps that work on different devices</li>
+            </ol>
+            
+            <h3>Getting Started</h3>
+            <p>To write HTML, you need a special program called VS Code (like a notebook for writing code).</p>
+            
+            <div class="tip">
+                <p><strong>Download VS Code:</strong> <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></p>
+                <p>Note: VS Code works on Windows and Mac computers, but not on phones or tablets.</p>
+            </div>
+			
+			    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'thinking')">Thinking Like a Developer</div>
+            <div class="tab" onclick="openTab(event, 'pseudocode')">Pseudocode</div>
+            <div class="tab" onclick="openTab(event, 'algorithms')">Algorithms</div>
+            <div class="tab" onclick="openTab(event, 'sdlc')">SDLC</div>
+            <div class="tab" onclick="openTab(event, 'resources')">Resources</div>
+        </div>
+        
+        <!-- Thinking Like a Developer Tab -->
+        <div id="thinking" class="tab-content active">
+            <h2>Thinking Like a Developer</h2>
+            
+            <div class="analogy">
+                <h3>What is Development?</h3>
+                <p>Imagine you're building a Lego house. Development is similar:</p>
+                <ul>
+                    <li>You start with a plan (what the house should look like)</li>
+                    <li>You break it into small pieces (walls, roof, doors)</li>
+                    <li>You build each piece step by step</li>
+                    <li>You check if everything fits together</li>
+                </ul>
+                <p>Software development is the same - we build digital things piece by piece!</p>
+            </div>
+            
+            <h3>How Developers Think</h3>
+            <p>Developers solve problems in a special way:</p>
+            
+            <div class="steps">
+                <h4>1. Understand the Problem</h4>
+                <p>Example: "I need a website that shows my art portfolio"</p>
+                
+                <h4>2. Break It Down</h4>
+                <p>- A homepage with my name<br>
+                - A gallery page for my art<br>
+                - A contact page</p>
+                
+                <h4>3. Solve Small Pieces</h4>
+                <p>- First make the homepage<br>
+                - Then make the gallery<br>
+                - Then make the contact page</p>
+                
+                <h4>4. Put It All Together</h4>
+                <p>Connect the pages and test everything works</p>
+            </div>
+            
+            <div class="tip">
+                <h3>Developer Mindset Tips:</h3>
+                <ul>
+                    <li>There's always more than one way to solve a problem</li>
+                    <li>Start simple, then add complexity</li>
+                    <li>Expect to make mistakes - they help you learn!</li>
+                    <li>Google is your friend - all developers search for help</li>
+                </ul>
+            </div>
+            
+            <h3>What You'll Learn in This Course</h3>
+            <ol>
+                <li><strong>HTML</strong> - The building blocks of websites (like Lego bricks)</li>
+                <li><strong>CSS</strong> - Making your websites look beautiful (like paint and decorations)</li>
+                <li><strong>Development Skills</strong> - How to plan and build like a pro</li>
+            </ol>
+        </div>
+        
+        <!-- Pseudocode Tab -->
+        <div id="pseudocode" class="tab-content">
+            <h2>Pseudocode - Thinking Before Coding</h2>
+            
+            <div class="analogy">
+                <p>Pseudocode is like writing a recipe in plain English before you cook. It helps you plan your code without worrying about the exact programming words.</p>
+            </div>
+            
+            <h3>Example: Making a Sandwich</h3>
+            <p>Real instructions vs. pseudocode:</p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <div style="flex: 1; min-width: 250px;">
+                    <h4>Normal Instructions</h4>
+                    <ol>
+                        <li>Take two slices of bread</li>
+                        <li>Spread butter on one slice</li>
+                        <li>Add cheese on top of the butter</li>
+                        <li>Put the other slice on top</li>
+                    </ol>
+                </div>
+                
+                <div style="flex: 1; min-width: 250px;">
+                    <h4>Pseudocode</h4>
+                    <pre style="background-color: #f0f0f0; padding: 1rem;">
+BEGIN MakeSandwich
+    GET breadSlice1, breadSlice2
+    SPREAD butter ON breadSlice1
+    PUT cheese ON breadSlice1
+    PUT breadSlice2 ON TOP
+END MakeSandwich</pre>
+                </div>
+            </div>
+            
+            <h3>Why Use Pseudocode?</h3>
+            <ul>
+                <li>Helps you think through the steps</li>
+                <li>Easier to understand than real code</li>
+                <li>Can be turned into any programming language</li>
+                <li>Great for planning with teammates</li>
+            </ul>
+            
+            <div class="note">
+                <h3>Try It Yourself:</h3>
+                <p>Write pseudocode for making a cup of tea:</p>
+                <pre style="background-color: white; border: 1px dashed #333; min-height: 100px;">
+BEGIN MakeTea
+    [Your steps here]
+END MakeTea</pre>
+            </div>
+        </div>
+        
+        <!-- Algorithms Tab -->
+        <div id="algorithms" class="tab-content">
+            <h2>Algorithms - Step-by-Step Solutions</h2>
+            
+            <div class="analogy">
+                <p>An algorithm is like a recipe for solving a problem. It's a clear set of instructions to get from the problem to the solution.</p>
+            </div>
+            
+            <h3>Simple Algorithm Example</h3>
+            <p><strong>Problem:</strong> Determine if a number is even or odd</p>
+            
+            <div class="steps">
+                <h4>Algorithm Steps:</h4>
+                <ol>
+                    <li>Get a number from the user</li>
+                    <li>Divide the number by 2</li>
+                    <li>If there's no remainder, it's even</li>
+                    <li>If there is a remainder, it's odd</li>
+                    <li>Tell the user the result</li>
+                </ol>
+            </div>
+            
+            <h3>Algorithm Characteristics</h3>
+            <ul>
+                <li><strong>Clear:</strong> Each step is easy to understand</li>
+                <li><strong>Finite:</strong> It has a clear ending</li>
+                <li><strong>Effective:</strong> It actually solves the problem</li>
+                <li><strong>General:</strong> Works for different inputs</li>
+            </ul>
+            
+            <div class="tip">
+                <h3>Everyday Algorithms</h3>
+                <p>You use algorithms every day without realizing:</p>
+                <ul>
+                    <li>Following a recipe</li>
+                    <li>Getting dressed (underwear before pants!)</li>
+                    <li>Brushing your teeth</li>
+                </ul>
+            </div>
+            
+            <h3>Practice: Morning Routine Algorithm</h3>
+            <p>Write the steps for your morning routine as an algorithm:</p>
+            <pre style="background-color: white; border: 1px dashed #333; min-height: 100px;">
+BEGIN MorningRoutine
+    1. Wake up
+    2. [Your next step]
+    ...
+END MorningRoutine</pre>
+        </div>
+        
+        <!-- SDLC Tab -->
+        <div id="sdlc" class="tab-content">
+            <h2>Software Development Life Cycle (SDLC)</h2>
+            
+            <div class="analogy">
+                <p>Building software is like building a house. You need a plan, builders, and checks to make sure everything works.</p>
+            </div>
+            
+            <h3>The 5 Main Steps of SDLC</h3>
+            
+            <div class="steps">
+                <h4>1. Planning</h4>
+                <p>- What are we building?<br>
+                - Who is it for?<br>
+                - What features do we need?</p>
+                
+                <h4>2. Design</h4>
+                <p>- How will it look?<br>
+                - How will users interact with it?<br>
+                - What technologies will we use?</p>
+                
+                <h4>3. Development</h4>
+                <p>- Writing the actual code<br>
+                - Building each feature<br>
+                - Creating tests</p>
+                
+                <h4>4. Testing</h4>
+                <p>- Does everything work?<br>
+                - Are there any bugs?<br>
+                - Is it easy to use?</p>
+                
+                <h4>5. Deployment & Maintenance</h4>
+                <p>- Release to users<br>
+                - Fix any issues that come up<br>
+                - Add new features over time</p>
+            </div>
+            
+            <h3>Why SDLC Matters</h3>
+            <ul>
+                <li>Helps avoid mistakes and wasted time</li>
+                <li>Makes sure we build what users actually need</li>
+                <li>Helps teams work together effectively</li>
+                <li>Results in higher quality software</li>
+            </ul>
+            
+            <div class="note">
+                <h3>Your First Project SDLC</h3>
+                <p>When you build your first website:</p>
+                <ol>
+                    <li><strong>Plan:</strong> Sketch what pages you need</li>
+                    <li><strong>Design:</strong> Draw how each page should look</li>
+                    <li><strong>Develop:</strong> Write the HTML/CSS code</li>
+                    <li><strong>Test:</strong> Click all links, try on phone/computer</li>
+                    <li><strong>Deploy:</strong> Upload to GitHub or a web host</li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- Resources Tab -->
+        <div id="resources" class="tab-content">
+            <h2>Learning Resources</h2>
+            
+            <h3>Live Lectures</h3>
+            <p>Join our live lectures every Tuesday and Friday from 11:00 to 13:00:</p>
+            <a href="https://appoftheyear.co.za/" class="btn">Join Live Lecture</a>
+            <p>Recordings will be available if you can't attend live.</p>
+            
+            <h3>Recommended Tools</h3>
+            <ul>
+                <li><strong>VS Code:</strong> <a href="https://code.visualstudio.com/" target="_blank">Free code editor</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/" target="_blank">For saving and sharing your code</a></li>
+                <li><strong>CodePen:</strong> <a href="https://codepen.io/" target="_blank">Online HTML/CSS playground</a></li>
+            </ul>
+            
+            <h3>Practice Websites</h3>
+            <ul>
+                <li><a href="full_html_playground.html">HTML Playground</a> - Experiment with code</li>
+                <li><a href="html_challenges.html">HTML Challenges</a> - Test your skills</li>
+                <li><a href="html_begin.html">HTML Basics</a> - Start from the beginning</li>
+            </ul>
+            
+            <div class="tip">
+                <h3>Tips for Success</h3>
+                <ul>
+                    <li>Code a little every day</li>
+                    <li>Don't copy-paste - type everything yourself</li>
+                    <li>When stuck, take a break then try again</li>
+                    <li>Celebrate small wins!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        </div>
+        
+        <!-- Lesson 2: Setting up a Workspace -->
+        <div id="lesson2" class="tab-content">
+            <h2>Lesson 2: Setting up a Workspace</h2>
+            
+            <p>Your workspace is like your art table where you'll build your website. You need:</p>
+            
+            <ol>
+                <li>A text editor (VS Code - like your pencil)</li>
+                <li>A web browser (Chrome or Firefox - like your canvas)</li>
+                <li>A folder to keep all your files (like a drawer for your art supplies)</li>
+            </ol>
+            
+            <h3>Your First HTML Code</h3>
+            <p>Every HTML page starts with this basic structure:</p>
+            
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <div class="note">
+                <p><strong>Remember:</strong> HTML uses tags (words in &lt;brackets&gt;) to build web pages.</p>
+            </div>
+        </div>
+        
+        <!-- Lesson 3: Creating Paragraphs -->
+        <div id="lesson3" class="tab-content">
+            <h2>Lesson 3: Creating Paragraphs</h2>
+            
+            <p>Paragraphs are like the sentences of your webpage. They're made with the <code>&lt;p&gt;</code> tag.</p>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Hello everyone&lt;/p&gt;
+    &lt;p&gt;This is fun&lt;/p&gt; 
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <div class="tip">
+                <p><strong>Try it yourself:</strong> Copy this code into VS Code and save it as "my-page.html". Then open it in a web browser!</p>
+            </div>
+            
+            <h3>What's happening?</h3>
+            <ul>
+                <li><code>&lt;p&gt;</code> means "start a paragraph"</li>
+                <li><code>&lt;/p&gt;</code> means "end the paragraph"</li>
+                <li>Everything between them is your paragraph text</li>
+            </ul>
+        </div>
+        
+        <!-- Lesson 4: Creating Headings -->
+        <div id="lesson4" class="tab-content">
+            <h2>Lesson 4: Creating Headings</h2>
+            
+            <p>Headings are like titles in your webpage. HTML has 6 levels of headings, from <code>&lt;h1&gt;</code> (biggest) to <code>&lt;h6&gt;</code> (smallest).</p>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Home page&lt;/h1&gt;
+    &lt;h2&gt;This is heading 2&lt;/h2&gt;
+    &lt;h3&gt;This is heading 3&lt;/h3&gt;
+    &lt;h4&gt;This is heading 4&lt;/h4&gt;
+    &lt;h5&gt;This is heading 5&lt;/h5&gt;
+    &lt;h6&gt;This is heading 6&lt;/h6&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <div class="tip">
+                <p><strong>Pro Tip:</strong> Use <code>&lt;h1&gt;</code> for your main title, <code>&lt;h2&gt;</code> for section titles, and so on.</p>
+            </div>
+            
+            <h3>Why headings matter:</h3>
+            <ul>
+                <li>They help organize your page</li>
+                <li>They make your page easier to read</li>
+                <li>Search engines use them to understand your content</li>
+            </ul>
+        </div>
+        
+        <!-- Lesson 5: Web File Formats -->
+        <div id="lesson5" class="tab-content">
+            <h2>Lesson 5: Web File Formats</h2>
+            
+            <p>Just like you have different types of files on your computer (.doc for documents, .mp3 for music), websites use different file types too.</p>
+            
+            <h3>Common Web File Types:</h3>
+            <ul>
+                <li><strong>.html</strong> or <strong>.htm</strong> - Web pages (like the ones you're making!)</li>
+                <li><strong>.css</strong> - Files that make your page look pretty (we'll learn these later)</li>
+                <li><strong>.jpg</strong>, <strong>.png</strong>, <strong>.gif</strong> - Different types of pictures</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Remember:</strong> Always save your web pages with .html at the end (like "my-page.html")</p>
+            </div>
+            
+            <h3>Image Types:</h3>
+            <ul>
+                <li><strong>.jpg</strong> - Best for photos</li>
+                <li><strong>.png</strong> - Best for graphics with transparent backgrounds</li>
+                <li><strong>.gif</strong> - Best for simple animations</li>
+            </ul>
+        </div>
+        
+        <!-- Lesson 6: Creating a folder for Images -->
+        <div id="lesson6" class="tab-content">
+            <h2>Lesson 6: Creating a Folder for Images</h2>
+            
+            <p>Before we add pictures to our website, we need a place to keep them. We'll make a special folder called "images".</p>
+            
+            <h3>How to organize your files:</h3>
+            <ol>
+                <li>Create a main folder for your website (like "my-website")</li>
+                <li>Inside it, create a folder called "images"</li>
+                <li>Put all your pictures in the images folder</li>
+            </ol>
+            
+            <div class="tip">
+                <p><strong>Why this matters:</strong> Keeping your images in one place makes them easier to find, just like keeping all your toys in one toy box!</p>
+            </div>
+            
+            <h3>Example folder structure:</h3>
+            <pre>
+my-website/
+├── index.html
+├── about.html
+└── images/
+    ├── boat.jpg
+    ├── cat.png
+    └── dog.gif</pre>
+            
+            <div class="note">
+                <p><strong>Download practice images:</strong> <a href="#" class="btn">Click to Download</a></p>
+            </div>
+        </div>
+        
+        <!-- Lesson 7: Adding an Image -->
+        <div id="lesson7" class="tab-content">
+            <h2>Lesson 7: Adding an Image</h2>
+            
+            <p>Now let's add pictures to our webpage! We use the <code>&lt;img&gt;</code> tag.</p>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;img src="images/boat.jpg" /&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <h3>Important parts:</h3>
+            <ul>
+                <li><code>&lt;img&gt;</code> - This means "put an image here"</li>
+                <li><code>src="images/boat.jpg"</code> - This tells the browser where to find the picture</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Warning:</strong> Image names are case-sensitive! "Boat.jpg" is different from "boat.jpg"</p>
+            </div>
+            
+            <h3>What it looks like:</h3>
+            <img src="https://picsum.photos/400/300" alt="Example image" class="example">
+        </div>
+        
+        <!-- Lesson 8: Resizing an Image -->
+        <div id="lesson8" class="tab-content">
+            <h2>Lesson 8: Resizing an Image</h2>
+            
+            <p>Sometimes pictures are too big or too small. We can change their size!</p>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Setting image width and height&lt;/p&gt;
+    &lt;img src="images/boat.jpg" width="150"/&gt;
+    &lt;img src="images/boat.jpg" height="100"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <h3>How it works:</h3>
+            <ul>
+                <li><code>width="150"</code> - Makes the image 150 pixels wide</li>
+                <li><code>height="100"</code> - Makes the image 100 pixels tall</li>
+                <li>You can use just width or height (the other will adjust automatically)</li>
+            </ul>
+            
+            <div class="tip">
+                <p><strong>Best Practice:</strong> Usually only set width OR height (not both) so your picture doesn't look squished.</p>
+            </div>
+        </div>
+        
+        <!-- Lesson 9: Adding More Images -->
+        <div id="lesson9" class="tab-content">
+            <h2>Lesson 9: Adding More Images</h2>
+            
+            <p>You can add as many pictures to your page as you want! Just add more <code>&lt;img&gt;</code> tags.</p>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;My Photo Gallery&lt;/h1&gt;
+    &lt;img src="images/cablecar.jpg" height="150"/&gt;
+    &lt;img src="images/city.jpg" height="150"/&gt;
+    &lt;img src="images/plane.jpg" height="150"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <h3>Tips for multiple images:</h3>
+            <ul>
+                <li>Give them similar heights to make them line up nicely</li>
+                <li>You can add text between images with <code>&lt;p&gt;</code> tags</li>
+                <li>Remember to keep all images in your "images" folder</li>
+            </ul>
+        </div>
+        
+        <!-- Lesson 10: Your first Hyperlink -->
+        <div id="lesson10" class="tab-content">
+            <h2>Lesson 10: Your First Hyperlink</h2>
+            
+            <p>Links let you click to go to another page or website. They're made with the <code>&lt;a&gt;</code> tag (the "a" stands for "anchor").</p>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a href="http://www.google.com"&gt;Click here to go to Google&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <h3>Important parts:</h3>
+            <ul>
+                <li><code>&lt;a&gt;</code> - This means "this is a link"</li>
+                <li><code>href="..."</code> - This tells where the link goes</li>
+                <li>The text between the tags is what people see and click on</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Remember:</strong> Always include https:// when linking to other websites.</p>
+            </div>
+        </div>
+        
+        <!-- Lesson 11: Adding a Second Page -->
+        <div id="lesson11" class="tab-content">
+            <h2>Lesson 11: Adding a Second Page</h2>
+            
+            <p>Most websites have more than one page. Let's make an "About" page!</p>
+            
+            <h3>Steps:</h3>
+            <ol>
+                <li>Create a new file in VS Code</li>
+                <li>Save it as "about.html"</li>
+                <li>Add some content</li>
+            </ol>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;About us&lt;/h2&gt;
+    &lt;p&gt;Hello and welcome to our website!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <div class="tip">
+                <p><strong>Naming Tip:</strong> Your main page should always be called "index.html" - this is the page that opens automatically when someone visits your website.</p>
+            </div>
+        </div>
+        
+        <!-- Lesson 12: Linking to the Second Page -->
+        <div id="lesson12" class="tab-content">
+            <h2>Lesson 12: Linking to the Second Page</h2>
+            
+            <p>Now let's connect our two pages so we can click between them!</p>
+            
+            <h3>In index.html:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to My Site&lt;/h1&gt;
+    &lt;a href="about.html"&gt;Click here to learn about us&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <h3>In about.html:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;About us&lt;/h2&gt;
+    &lt;p&gt;Hello and welcome!&lt;/p&gt;
+    &lt;a href="index.html"&gt;Back to Home&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <div class="note">
+                <p><strong>Important:</strong> The file name in <code>href</code> must exactly match your other file's name (including capitalization).</p>
+            </div>
+        </div>
+        
+        <!-- Lesson 13: A Page With an Image -->
+        <div id="lesson13" class="tab-content">
+            <h2>Lesson 13: A Page With an Image</h2>
+            
+            <p>Let's make a special page that shows a big picture, like in a photo gallery.</p>
+            
+            <h3>Steps:</h3>
+            <ol>
+                <li>Create a new file called "boat.html"</li>
+                <li>Add an image tag with your picture</li>
+                <li>Add a link back to the home page</li>
+            </ol>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;img src="images/boat.jpg"&gt;
+    &lt;br/&gt;
+    &lt;a href="index.html"&gt;Home&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <div class="tip">
+                <p><strong>New Tag:</strong> <code>&lt;br/&gt;</code> makes a line break (like pressing Enter in a document).</p>
+            </div>
+        </div>
+        
+        <!-- Lesson 14: Image Links -->
+        <div id="lesson14" class="tab-content">
+            <h2>Lesson 14: Image Links</h2>
+            
+            <p>Now let's make pictures that you can click on! This is how photo galleries work.</p>
+            
+            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Click the boat picture below:&lt;/p&gt;
+    &lt;a href="boat.html"&gt;
+        &lt;img src="images/boat.jpg" height="150"/&gt;
+    &lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            
+            <h3>How it works:</h3>
+            <ul>
+                <li>Put the <code>&lt;img&gt;</code> tag inside the <code>&lt;a&gt;</code> tags</li>
+                <li>When you click the image, it will go to the page in the href</li>
+                <li>You can use this to make thumbnail galleries</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Congratulations!</strong> You've now learned all the basics of HTML! 🎉</p>
+                <p>Next we'll learn CSS to make your pages look beautiful!</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 HTML Learning Hub. All rights reserved.</p>
+        <p>Created by Zoleka Dlamini</p>
+    </footer>
+
+    <script>
+	
+        function openTab(evt, tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tabs
+            const tabs = document.getElementsByClassName("tab");
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            // Show the current tab and add active class
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

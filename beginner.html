@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner's Guide | HTML Learning Hub</title>
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff3e9d;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --warning: #ffc107;
+            --info: #17a2b8;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--light) 0%, #e6f2ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 0.8rem;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .quiz {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid var(--info);
+        }
+        
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .quiz-options {
+            margin-left: 20px;
+        }
+        
+        .quiz-option {
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background-color: #e9ecef;
+        }
+        
+        .quiz-feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .pseudo-exercise {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .pseudo-example {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.3rem 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>✨ Beginner's Guide to HTML ✨</h1>
+        <p>Start your coding journey with these fun, interactive activities!</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+			     <li><a href="Learn.html">Learn</a></li>
+            <li><a href="lessons.html">HTML Lessons</a></li>
+            <li><a href="playground.html">Interactive Playground</a></li>
+            <li><a href="challenges.html">Coding Challenges</a></li>
+            <li><a href="beginner.html">Beginner's Guide</a></li>
+            <li><a href="IDE.html">IDE</a></li>
+			
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- Computational Thinking Section -->
+        <div class="card">
+            <h2>🧠 First, Let's Think Like a Computer!</h2>
+            <p>Before we code, let's practice <strong>computational thinking</strong> - breaking problems into small steps computers can understand.</p>
+            
+            <div class="pseudo-exercise">
+                <h3>🍪 Exercise: Making a Sandwich Algorithm</h3>
+                <p>Imagine you're teaching a robot how to make a peanut butter sandwich. Write the steps in order:</p>
+                
+                <div class="pseudo-example" contenteditable="true">
+1. Take out two slices of bread
+2. Open the peanut butter jar
+3. 
+4. 
+5. 
+6. Put the slices together
+7. Enjoy your sandwich!
+                </div>
+                
+                <button onclick="checkSandwichAlgorithm()" style="background: var(--success); color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">Check My Steps</button>
+                <div id="sandwich-feedback" style="display:none; margin-top:10px; padding:10px; background-color:#e6f7ff; border-radius:5px;"></div>
+            </div>
+        </div>
+        
+        <!-- Interactive Quiz -->
+        <div class="card">
+            <h2>🎯 Quick HTML Knowledge Check</h2>
+            <p>Let's see what you already know about web pages!</p>
+            
+            <div class="quiz">
+                <div class="quiz-question">1. What does HTML stand for?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkQuizAnswer(1, this, 'HyperText Markup Language')">HyperText Markup Language</div>
+                    <div class="quiz-option" onclick="checkQuizAnswer(1, this, 'Wrong')">Hyperlinks and Text Markup Language</div>
+                    <div class="quiz-option" onclick="checkQuizAnswer(1, this, 'Wrong')">Home Tool Markup Language</div>
+                </div>
+                <div id="quiz-feedback-1" class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz">
+                <div class="quiz-question">2. Which tag is used for the largest heading?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkQuizAnswer(2, this, 'Wrong')">&lt;head&gt;</div>
+                    <div class="quiz-option" onclick="checkQuizAnswer(2, this, 'Wrong')">&lt;h6&gt;</div>
+                    <div class="quiz-option" onclick="checkQuizAnswer(2, this, '&lt;h1&gt;')">&lt;h1&gt;</div>
+                </div>
+                <div id="quiz-feedback-2" class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz">
+                <div class="quiz-question">3. What is the correct way to add an image?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkQuizAnswer(3, this, 'Wrong')">&lt;image src="photo.jpg"&gt;</div>
+                    <div class="quiz-option" onclick="checkQuizAnswer(3, this, '&lt;img src="photo.jpg"&gt;')">&lt;img src="photo.jpg"&gt;</div>
+                    <div class="quiz-option" onclick="checkQuizAnswer(3, this, 'Wrong')">&lt;picture&gt;photo.jpg&lt;/picture&gt;</div>
+                </div>
+                <div id="quiz-feedback-3" class="quiz-feedback"></div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <p>Ready to start coding? Head over to our <a href="playground.html">Interactive Playground</a> to begin!</p>
+            <p>Created by Zoleka Dlamini</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 HTML Support Circle. All rights reserved.</p>
+        <p>Created by Zoleka Dlamini</p>
+    </footer>
+
+    <script>
+        // Sandwich algorithm check
+        function checkSandwichAlgorithm() {
+            const feedback = document.getElementById("sandwich-feedback");
+            // In a real implementation, you would check the steps
+            feedback.innerHTML = "✅ Great start! A complete algorithm might include:<br>3. Spread peanut butter on one slice<br>4. (Optional) Add jelly<br>5. Put the second slice on top";
+            feedback.style.display = "block";
+        }
+        
+        // Quiz functionality
+        function checkQuizAnswer(questionNum, element, correctAnswer) {
+            const feedback = document.getElementById(`quiz-feedback-${questionNum}`);
+            const userAnswer = element.textContent;
+            
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "✅ Correct! Great job!";
+                feedback.className = "quiz-feedback correct";
+                element.style.backgroundColor = "#d4edda";
+            } else {
+                feedback.textContent = `❌ Not quite! The correct answer is: ${correctAnswer}`;
+                feedback.className = "quiz-feedback incorrect";
+                element.style.backgroundColor = "#f8d7da";
+            }
+            
+            feedback.style.display = "block";
+        }
+    </script>
+</body>
+</html>

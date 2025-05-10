@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Challenges | HTML Learning Hub</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --error: #ef233c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 0.8rem;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .activity-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .challenge {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .btn-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML Challenges</h1>
+        <p>Test your HTML skills with these practical exercises</p>
+    </header>
+    
+  <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+			     <li><a href="Learn.html">Learn</a></li>
+            <li><a href="lessons.html">HTML Lessons</a></li>
+            <li><a href="playground.html">Interactive Playground</a></li>
+            <li><a href="challenges.html">Coding Challenges</a></li>
+            <li><a href="beginner.html">Beginner's Guide</a></li>
+            <li><a href="IDE.html">IDE</a></li>
+			
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="activity-card">
+            <h3>1. HTML Structure Challenge</h3>
+            <p>Create a valid HTML document with all the essential elements.</p>
+            <div class="challenge">
+                <strong>Challenge:</strong> Your document must include:
+                <ul>
+                    <li>DOCTYPE declaration</li>
+                    <li>HTML, head, and body tags</li>
+                    <li>A title in the head section</li>
+                    <li>At least one heading and one paragraph in the body</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary" onclick="loadChallenge('structure')">Show Example</button>
+            <button class="btn btn-success" onclick="checkStructure()">Check My Code</button>
+            <div id="structure-feedback" class="feedback"></div>
+        </div>
+        
+        <div class="activity-card">
+            <h3>2. Headings Challenge</h3>
+            <p>Use all six heading levels to create a document outline.</p>
+            <div class="challenge">
+                <strong>Challenge:</strong> Create a page with:
+                <ul>
+                    <li>All heading levels from h1 to h6</li>
+                    <li>Appropriate content for each heading level</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary" onclick="loadChallenge('headings')">Show Example</button>
+            <button class="btn btn-success" onclick="checkHeadings()">Check My Code</button>
+            <div id="headings-feedback" class="feedback"></div>
+        </div>
+        
+        <div class="activity-card">
+            <h3>3. Image Gallery Challenge</h3>
+            <p>Create a photo gallery with multiple images.</p>
+            <div class="challenge">
+                <strong>Challenge:</strong> Requirements:
+                <ul>
+                    <li>At least 3 images</li>
+                    <li>Consistent sizing (use width or height attributes)</li>
+                    <li>A heading for your gallery</li>
+                </ul>
+                <p>You can use these test image URLs: https://picsum.photos/200, https://picsum.photos/300, https://picsum.photos/400</p>
+            </div>
+            <button class="btn btn-primary" onclick="loadChallenge('gallery')">Show Example</button>
+            <button class="btn btn-success" onclick="checkGallery()">Check My Code</button>
+            <div id="gallery-feedback" class="feedback"></div>
+        </div>
+        
+        <div class="activity-card">
+            <h3>4. Multi-page Website Challenge</h3>
+            <p>Create a simple multi-page website with navigation.</p>
+            <div class="challenge">
+                <strong>Challenge:</strong> Create:
+                <ul>
+                    <li>A home page (index.html)</li>
+                    <li>An about page</li>
+                    <li>A contact page</li>
+                    <li>Navigation links between all pages</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary" onclick="loadChallenge('multipage')">Show Example</button>
+            <div style="margin-top: 15px;">
+                <p>Practice this in our <a href="playground.html">Interactive Playground</a> or in your local development environment.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <p>Created by Zoleka Dlamini</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 HTML Learning Hub. All rights reserved.</p>
+        <p>Created by Zoleka Dlamini</p>
+    </footer>
+
+    <script>
+        // Load challenge examples
+        function loadChallenge(challenge) {
+            let exampleCode = '';
+            let feedbackElement = '';
+            
+            switch(challenge) {
+                case 'structure':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>My Structured Document</title>
+</head>
+<body>
+    <h1>Main Heading</h1>
+    <p>This is a paragraph in my well-structured HTML document.</p>
+</body>
+</html>`;
+                    feedbackElement = 'structure-feedback';
+                    break;
+                    
+                case 'headings':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Heading Example</title>
+</head>
+<body>
+    <h1>Main Title</h1>
+    <h2>Section Heading</h2>
+    <h3>Subsection</h3>
+    <h4>Detail Heading</h4>
+    <h5>Small Point</h5>
+    <h6>Tiny Detail</h6>
+</body>
+</html>`;
+                    feedbackElement = 'headings-feedback';
+                    break;
+                    
+                case 'gallery':
+                    exampleCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Gallery</title>
+</head>
+<body>
+    <h1>My Photo Collection</h1>
+    <img src="https://picsum.photos/200" width="200">
+    <img src="https://picsum.photos/300" width="200">
+    <img src="https://picsum.photos/400" width="200">
+</body>
+</html>`;
+                    feedbackElement = 'gallery-feedback';
+                    break;
+            }
+            
+            // In a real implementation, this would load into an editor
+            alert("Example code loaded! Use this as reference in our Interactive Playground or your own editor:\n\n" + exampleCode);
+            
+            // Clear any previous feedback
+            if (feedbackElement) {
+                document.getElementById(feedbackElement).style.display = 'none';
+            }
+        }
+        
+        // Check challenge solutions
+        function checkStructure() {
+            // In a real implementation, this would check code in an editor
+            const feedback = document.getElementById('structure-feedback');
+            feedback.innerHTML = '✅ In a real implementation, this would check your code structure. For now, compare with the example!';
+            feedback.className = 'feedback success';
+            feedback.style.display = 'block';
+        }
+        
+        function checkHeadings() {
+            const feedback = document.getElementById('headings-feedback');
+            feedback.innerHTML = '✅ In a real implementation, this would verify all heading levels. Check the example for guidance!';
+            feedback.className = 'feedback success';
+            feedback.style.display = 'block';
+        }
+        
+        function checkGallery() {
+            const feedback = document.getElementById('gallery-feedback');
+            feedback.innerHTML = '✅ In a real implementation, this would validate your image gallery. Use the example as a reference!';
+            feedback.className = 'feedback success';
+            feedback.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
