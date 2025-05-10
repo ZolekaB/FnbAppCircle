@@ -1,152 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Learning Hub | By Zoleka Dlamini</title>
-    <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --error: #ef233c;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            background-color: var(--dark);
-            padding: 0.8rem;
-        }
-        
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        nav li {
-            margin: 0 1rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        
-        nav a:hover {
-            background-color: var(--primary);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-        
-        .welcome-section {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .feature-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .feature-card h3 {
-            color: var(--primary);
-            margin-top: 0;
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary);
-        }
-        
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav li {
-                margin: 0.3rem 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FNB App Academy | Zoleka's Guide</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #fff8f1, #ffe6cc);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #2f2f2f, #4d2600);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin: 0;
+}
+
+    nav {
+      background-color: #1f1f1f;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff9900;
+    }
+
+    .intro {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .intro p {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .box {
+      background: #fff;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      width: 300px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      border-color: #ff9900;
+    }
+
+    .box h3 {
+      margin-bottom: 1rem;
+      color: #b3541e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #2f2f2f;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .zulu {
+      color: #4e4e4e;
+      font-style: italic;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #ff9900;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #cc7a00;
+}
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+	
+
+    .background {
+      background-image: url('https://images.unsplash.com/photo-1587547131205-6d4c6044b95c?fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 4rem 2rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .background h2 {
+      font-size: 2.2rem;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>HTML Learning Hub</h1>
-        <p>Master HTML from the ground up with interactive lessons</p>
-    </header>
-    
-    
-      
-      <nav>
+
+  <header>
+    <h1>Welcome to My Coding Corner</h1>
+    <p>Helping beginners find their way — one tag at a time</p>
+  </header>
+
+  <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
 			     <li><a href="learn.html">Learn</a></li>
@@ -158,42 +179,41 @@
 			
         </ul>
     </nav>
-    
-    <div class="container">
-        <section class="welcome-section">
-            <h2>Welcome to Your HTML Learning Journey!</h2>
-            <p>This comprehensive resource brings together everything you need to learn HTML, from complete beginner to confident web developer. Whether you prefer structured lessons, hands-on challenges, or interactive coding, we've got you covered.</p>
-            <p>Created with ❤️ by Zoleka Dlamini</p>
-            <a href="lessons.html" class="btn">Start Learning Now</a>
-        </section>
-        
-        <section class="features">
-            <div class="feature-card">
-                <h3>Structured Lessons</h3>
-                <p>Follow our step-by-step HTML lessons that take you from absolute basics to creating complete web pages with images and links.</p>
-                <a href="lessons.html" class="btn">Explore Lessons</a>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Interactive Playground</h3>
-                <p>Practice HTML in our built-in coding environment with live preview. Experiment and see results instantly!</p>
-                <a href="playground.html" class="btn">Try the Playground</a>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Coding Challenges</h3>
-                <p>Test your skills with practical challenges that reinforce what you've learned and build your confidence.</p>
-                <a href="challenges.html" class="btn">Take the Challenges</a>
-            </div>
-        </section>
-    </div>
-	
-	
-	
-    
-    <footer>
-        <p>&copy; 2023 HTML Learning Hub. All rights reserved.</p>
-        <p>Created by Zoleka Dlamini</p>
-    </footer>
+
+  <section class="intro">
+    <p>Hi, I’m <strong>Zoleka</strong> — a software developer based in Durban. I joined the FNB App Academy not because I’m new, but because I believe in giving back. After a comment I left on TikTok offering to help, this support journey began. If you’re feeling lost, you’re in the right place. Don’t panic, we’re learning step-by-step — together.</p>
+    <div class="zulu">Asithi: “Akukho ukudlala lana — kodwa sizodlala ngama-tags.” 😄</div>
+  </section>
+
+  <div class="background">
+    <h2>“Your journey in tech begins here, and it starts with courage.”</h2>
+  </div>
+
+ <section class="container">
+  <div class="box" onclick="location.href='lessons.html'">
+    <h3>📚 Structured Lessons</h3>
+    <p>Follow our step-by-step HTML lessons that take you from absolute basics to creating complete web pages with images and links.</p>
+    <a href="lessons.html" class="btn">Explore Lessons</a>
+  </div>
+
+  <div class="box" onclick="location.href='playground.html'">
+    <h3>💻 Interactive Playground</h3>
+    <p>Practice HTML in our built-in coding environment with live preview. Experiment and see results instantly!</p>
+    <a href="playground.html" class="btn">Try the Playground</a>
+  </div>
+
+  <div class="box" onclick="location.href='challenges.html'">
+    <h3>🏆 Coding Challenges</h3>
+    <p>Test your skills with practical challenges that reinforce what you've learned and build your confidence.</p>
+    <a href="challenges.html" class="btn">Take the Challenges</a>
+  </div>
+</section>
+
+
+  <footer>
+    “Umuntu ngumuntu ngabantu” — We rise by lifting others.<br />
+    &copy; 2025 Zoleka | Made with Ubuntu & Love
+  </footer>
+
 </body>
 </html>
